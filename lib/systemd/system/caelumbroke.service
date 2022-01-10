@@ -1,0 +1,19 @@
+[Unit]
+Description=CaelumBroker MQTT Broker
+Documentation=man:caelumbroker.conf(5) man:caelumbroker(8)
+After=network.target
+Wants=network.target
+
+[Service]
+Type=notify
+NotifyAccess=main
+ExecStart=/usr/sbin/caelumbroker -c /etc/caelumbroker/caelumbroker.conf
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=on-failure
+ExecStartPre=/bin/mkdir -m 740 -p /var/log/caelumbroker
+ExecStartPre=/bin/chown caelumbroker /var/log/caelumbroker
+ExecStartPre=/bin/mkdir -m 740 -p /run/caelumbroker
+ExecStartPre=/bin/chown caelumbroker /run/caelumbroker
+
+[Install]
+WantedBy=multi-user.target
