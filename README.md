@@ -27,7 +27,18 @@ Restart the Linux environment
 
 Once restarted do:
 
-
 ```bash
 sudo service caelumbroker start
+```
+
+You can see the service status by doing:
+
+```bash
+sudo service caelumbroker status
+```
+
+Stop the service doing:
+
+```bash
+sudo service caelumbroker stop
 ```
